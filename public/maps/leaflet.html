@@ -1,0 +1,47 @@
+<html>
+<head>
+
+    <title>Leaflet</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" type="text/css" href="leaflet.css">
+</head>
+<body>
+<div class='container'>
+    <div class='peta' id='mapid'> </div>
+    <div class='gambar'>
+        <h3>Gambar di sini</h3>
+    </div>
+    <div class='review'>
+        <h3>Disini Tempat Belajar Komunitas di Semarang</h3>
+    </div>
+</div>
+<script>
+    // alamat kost
+    var mymap = L.map('mapid').setView([-6.967506, 110.424828], 14); 
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, imagery <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxzoom: 20,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoicW9tYXJpYWhrZCIsImEiOiJjam02ZHlmbXQwMTZ2M3FuczI0OW8xZzc2In0.BhUq1OXo80hWJC28475eWg'
+    }).addTo(mymap);
+    
+    var marker = L.marker([-6.967506, 110.424828]).addTo(mymap);
+    var circle = L.circle([-6.967506, 110.424828],{
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 300
+    }).addTo(mymap);
+    marker.bindPopup("<b>Alamat SDK :)</b>").openPopup();
+    circle.bindPopup("I am a circle.");
+
+</script>
+</body>
+</html>
